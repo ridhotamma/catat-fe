@@ -1,0 +1,14 @@
+<div class="app-container">
+  <router-outlet></router-outlet>
+  <nav *ngIf="isBottomBarVisible" class="app-bottom-bar">
+    <a class="bottom-bar-item" routerLink="/">
+      <span>Home</span>
+    </a>
+    <a class="bottom-bar-item" routerLink="/attendance-log">
+      <span>Attendance Log</span>
+    </a>
+    <a class="bottom-bar-item" routerLink="/settings">
+      <span>Settings</span>
+    </a>
+  </nav>
+</div>

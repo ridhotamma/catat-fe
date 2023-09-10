@@ -1,0 +1,30 @@
+.settings {
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 2em;
+    
+    h1 {
+        margin-bottom: 1em;
+    }
+
+    ul {
+      li {
+        padding: 10px 15px;
+        list-style: none;
+        background-color: white;
+        margin-bottom: 1em;
+        cursor: pointer;
+  
+        div {
+          p {
+            margin: 0;
+          }
+  
+          p:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  

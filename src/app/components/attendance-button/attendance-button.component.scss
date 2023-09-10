@@ -1,0 +1,28 @@
+.request-button {
+    display: flex;
+    gap: 5px;
+  
+    button {
+      padding: 10px 20px; 
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      background-color: #ff5900; 
+      color: #fff; 
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #d54c02;  
+      }
+  
+      &:first-child {
+        background-color: #4caf50;
+      }
+  
+      &:first-child:hover {
+        background-color: #388e3c; 
+      }
+    }
+  }
+  
