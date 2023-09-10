@@ -10,7 +10,9 @@ import { AttendanceLogComponent } from './views/attendance-log/attendance-log.co
 import { UserManagementComponent } from './views/user-management/user-management.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { LoginComponent } from './views/login/login.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +27,13 @@ import { LoginComponent } from './views/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
