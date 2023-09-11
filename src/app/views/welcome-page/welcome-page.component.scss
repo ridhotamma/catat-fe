@@ -16,6 +16,10 @@
   .welcome-banner h1 {
     font-size: 2.5rem;
     margin: 0;
+
+    @media screen and (max-width: 780px) {
+      font-size: 2rem;
+    }
   }
   
   .attendance {

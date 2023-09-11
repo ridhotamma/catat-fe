@@ -19,6 +19,10 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 780px) {
+    width: 100%
+  }
 }
 
 .app-bottom-bar {
@@ -48,5 +52,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  
+  @media screen and (max-width: 780px) {
+    width: 100%
   }
 }
