@@ -2,12 +2,15 @@
   <router-outlet></router-outlet>
   <nav *ngIf="isBottomBarVisible" class="app-bottom-bar">
     <a class="bottom-bar-item" routerLink="/">
+      <app-svg-icon iconClass="home"></app-svg-icon>
       <span>Home</span>
     </a>
     <a class="bottom-bar-item" routerLink="/attendance-log">
+      <app-svg-icon iconClass="list"></app-svg-icon>
       <span>Attendance Log</span>
     </a>
     <a class="bottom-bar-item" routerLink="/settings">
+      <app-svg-icon iconClass="settings"></app-svg-icon>
       <span>Settings</span>
     </a>
   </nav>

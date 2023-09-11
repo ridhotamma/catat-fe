@@ -13,6 +13,10 @@ import { LoginComponent } from './views/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { SwitchMenuComponent } from './components/switch-menu/switch-menu.component';
+import { ClockTimeComponent } from './views/clock-time/clock-time.component';
+import { RequestComponent } from './views/request/request.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +27,10 @@ import { ToastrModule } from 'ngx-toastr';
     UserManagementComponent,
     SettingsComponent,
     LoginComponent,
+    SvgIconComponent,
+    SwitchMenuComponent,
+    ClockTimeComponent,
+    RequestComponent,
   ],
   imports: [
     BrowserModule,

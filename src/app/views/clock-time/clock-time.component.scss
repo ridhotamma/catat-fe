@@ -1,0 +1,27 @@
+.clock-time {
+    height: 100%;
+  
+    h1 {
+      margin-bottom: 1em;
+   }
+  
+    ul {
+      li {
+        padding: 10px 15px;
+        list-style: none;
+        background-color: white;
+        margin-bottom: 1em;
+  
+        div {
+          p {
+            margin: 0;
+          }
+  
+          p:first-child {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  

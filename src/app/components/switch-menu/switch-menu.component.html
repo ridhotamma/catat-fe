@@ -1,0 +1,10 @@
+<div class="switch-menu">
+  <div
+    *ngFor="let menu of menus; let i = index"
+    class="menu"
+    [class.menu--active]="i === activeMenuIndex"
+    (click)="setActiveMenu(i)"
+  >
+    {{ menu.name }}
+  </div>
+</div>

@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private apiUrl = 'https://dummyjson.com/auth/login';
+  private apiUrl = '127.0.0.1:3000';
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
-    const credentials = { username: 'kminchelle', password: '0lelplR' };
+    const credentials = { username, password };
     return this.http.post(this.apiUrl + '/login', credentials);
   }
 }
