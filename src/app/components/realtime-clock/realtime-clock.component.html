@@ -1,4 +1,6 @@
-<div class="clock">
-    <span>{{ currentTime | date: 'HH:mm:ss' }}</span>
+<div class="date">
+  <span>{{ currentTime | date : "MMMM" }} {{ currentTime.getDate() }}{{ getDaySuffix(currentTime.getDate()) }} {{ currentTime | date : "yyyy" }}</span>
 </div>
-  
+<div class="clock">
+  <span>{{ currentTime | date : "HH:mm:ss" }}</span>
+</div>
