@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectAccessToken, selectUserDetail } from 'src/app/store/selectors/auth.selector';
 
 @Component({
   selector: 'app-welcome-page',
@@ -7,5 +9,7 @@ import { Component } from '@angular/core';
 })
 
 export class WelcomePageComponent {
-
+  userDetail$ = this.store.select(selectUserDetail)
+  
+  constructor(private store: Store) {}
 }

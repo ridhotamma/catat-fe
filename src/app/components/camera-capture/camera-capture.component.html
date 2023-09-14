@@ -1,0 +1,28 @@
+<div class="camera-container">
+  <video *ngIf="!capturedImage" #videoElement autoplay></video>
+
+  <span (click)="closeCamera()" class="close-btn cursor-pointer">
+    <app-svg-icon iconClass="close" color="white" [width]="30"></app-svg-icon>
+  </span>
+
+  <div *ngIf="!isCapturing && !capturedImage || isHidingAllBtn" class="default-placeholder">
+    <app-svg-icon [width]="45" color="white" iconClass="camera"></app-svg-icon>
+    <p *ngIf="isCameraBlocked">Please add permission to the camera</p>
+  </div>
+
+  <div *ngIf="!isHidingAllBtn" class="btn-container">
+    <button *ngIf="!isCapturing && !capturedImage" (click)="startCamera()">
+      Start Camera
+    </button>
+    <button class="capture-btn" *ngIf="isCapturing && !capturedImage" (click)="captureImage()">
+      Capture
+    </button>
+    <button *ngIf="!isCapturing && capturedImage" (click)="retakeImage()">
+      Retake
+    </button>
+    <button class="capture-btn" *ngIf="capturedImage" (click)="saveImage()">
+      Save
+    </button>
+  </div>
+  <img class="img-result" [src]="capturedImage" *ngIf="capturedImage" alt="Captured Image" />
+</div>

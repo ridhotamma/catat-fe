@@ -1,0 +1,28 @@
+<!-- attendance-request.component.html -->
+<div class="attendance-request">
+    <div class="header">
+      <app-svg-icon class="cursor-pointer" routerLink="/" iconClass="arrow-left" [width]="25"></app-svg-icon>
+      <h2>Attendance Request</h2>
+    </div>
+    
+    <div class="selfie-upload">
+      <p class="label">Selfie Image</p>
+      <div routerLink="/attendance-request/camera-capture" class="selfie-preview cursor-pointer">
+        <img *ngIf="selfieImage" [src]="selfieImage" alt="Selfie">
+        <app-svg-icon *ngIf="!selfieImage" [width]="30" iconClass="camera"></app-svg-icon>
+      </div>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <p class="label" for="notes">Notes</p>
+        <textarea id="notes" name="notes" class="form-control" [(ngModel)]="notes"></textarea>
+      </div>
+    </form>
+  
+    <button [disabled]="isRequestButtonDisabled()" (click)="submitRequest()">Request</button>
+</div>
+
+<router-outlet></router-outlet>
+
+  

@@ -8,6 +8,7 @@ import { Component, Input, ElementRef, OnInit, Renderer2 } from '@angular/core';
 export class SvgIconComponent {
   @Input() iconClass: string = ''
   @Input() width: number = 20
+  @Input() color: string = 'currentColor'
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -27,6 +28,7 @@ export class SvgIconComponent {
         const svgDocument = parser.parseFromString(svgContent, 'image/svg+xml');
         const svgElement = svgDocument.querySelector('svg');
         svgElement?.setAttribute('width', `${this.width}px`);
+        svgElement?.setAttribute('stroke', `${this.color}`);
         // Append the modified SVG to the component's element
         this.renderer.appendChild(this.el.nativeElement, svgElement);
       })

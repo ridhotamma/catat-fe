@@ -1,5 +1,6 @@
 <div class="welcome-banner">
-    <h1>Welcome Back!, Ridho Tamma</h1>
+    <h1 *ngIf="userDetail$ | async as userDetail; else loading">Welcome Back!, {{ userDetail.fullname }}</h1>
+    <ng-template #loading>Loading user data...</ng-template>
 </div>
 
 <div class="attendance">
