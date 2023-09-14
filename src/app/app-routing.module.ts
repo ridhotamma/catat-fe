@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomePageComponent } from './views/welcome-page/welcome-page.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { LoginComponent } from './views/login/login.component';
-import { ClockTimeComponent } from './views/clock-time/clock-time.component';
-import { RequestComponent } from './views/request/request.component';
 import { AttendanceLogComponent } from './views/attendance-log/attendance-log.component';
+import { RequestComponent } from './views/attendance-log/request/request.component';
+import { ClockTimeComponent } from './views/attendance-log/clock-time/clock-time.component';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent, title: 'Welcome Back' },
