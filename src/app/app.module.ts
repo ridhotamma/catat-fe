@@ -10,7 +10,7 @@ import { AttendanceLogComponent } from './views/attendance-log/attendance-log.co
 import { UserManagementComponent } from './views/user-management/user-management.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { LoginComponent } from './views/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
@@ -23,6 +23,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { AttendanceRequestComponent } from './views/attendance-request/attendance-request.component';
 import { CameraCaptureComponent } from './components/camera-capture/camera-capture.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 interface IState {
   auth: AuthState;
@@ -73,7 +74,13 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ToastrModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { take } from 'rxjs';
 import { selectAccessToken, selectUserDetail } from 'src/app/store/selectors/auth.selector';
 
 @Component({
@@ -10,6 +11,5 @@ import { selectAccessToken, selectUserDetail } from 'src/app/store/selectors/aut
 
 export class WelcomePageComponent {
   userDetail$ = this.store.select(selectUserDetail)
-  
   constructor(private store: Store) {}
 }
