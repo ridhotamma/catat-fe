@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AttendanceRequestPayload, AttendanceRequestService } from 'src/app/services/attendance-request.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -11,10 +13,13 @@ export class AttendanceRequestComponent implements OnInit, OnDestroy {
   notes: string = '';
   selfieImage: string | null = '';
   fileImage: File | null = null;
+  submitLoading: boolean = false
 
   constructor(
     private dataService: DataService,
-    private attendanceRequestService: AttendanceRequestService
+    private attendanceRequestService: AttendanceRequestService,
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +40,8 @@ export class AttendanceRequestComponent implements OnInit, OnDestroy {
   }
 
   submitRequest(): void {
+    this.submitLoading = true
+
     const formData: any = new FormData()
 
     formData.set('notes', this.notes)
@@ -43,9 +50,12 @@ export class AttendanceRequestComponent implements OnInit, OnDestroy {
     formData.set('selfie_image', this.fileImage)
 
     this.attendanceRequestService.clockIn(formData).subscribe({
-      next: (v) => console.log({ v }),
+      next: (v) => {
+        this.toastr.success(v.message)
+        this.router.navigate(['attendance-log/request'])
+      },
       error: (e) => console.log({ e }),
-      complete: () => console.info('complete')
+      complete: () => this.submitLoading = false
     })
   }
 }

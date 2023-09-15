@@ -10,6 +10,55 @@ export interface AttendanceLogParams {
   per_page?: number;
 }
 
+export interface AttendanceLog {
+  id: number;
+  status: Status;
+  requested_datetime: RequestedDatetime;
+  requested_by: RequestedBy;
+  approved_by: ApprovedBy | null;
+  notes: string;
+  location: Location | null;
+  selfie_image_url: string;
+}
+
+export interface Status {
+  status_name: string;
+  status_code: string;
+  is_rejected: boolean;
+  is_pending: boolean;
+  is_approved: boolean;
+  is_cancelled: boolean;
+}
+
+export interface RequestedDatetime {
+  clock_in_datetime: string;
+  clock_in_datetime_formatted: string;
+  clock_out_datetime: string;
+  clock_out_datetime_formatted: string;
+}
+
+export interface RequestedBy {
+  email: string;
+  first_name: string;
+  last_name: string;
+  user_id: number;
+  role: string;
+}
+
+export interface ApprovedBy {
+  email: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  user_id: number | null;
+  role: string | null;
+}
+
+export interface Location {
+  latitude: number | null;
+  longitude: number | null;
+}
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,29 +67,27 @@ export class AttendanceLogService {
 
   constructor(private http: HttpClient) {}
 
-  myAttendances(params: AttendanceLogParams): Observable<any> {
-     let httpParams = new HttpParams();
-
-     Object.entries(params).forEach(([key, value]) => {
-       if (value !== undefined) {
-         httpParams = httpParams.set(key, value.toString());
-       }
-     });
- 
-     const url = this.apiUrl + '/attendance_requests';
- 
-     return this.http.get(url, { params: httpParams });
-  }
-
-  allAttendances(params: AttendanceLogParams): Observable<any> {
+  private createHttpParams(params: AttendanceLogParams): HttpParams {
     let httpParams = new HttpParams();
-     
-    Object.entries(params).forEach(([key, value]) => {
+
+    for (const [key, value] of Object.entries(params)) {
       if (value !== undefined) {
         httpParams = httpParams.set(key, value.toString());
       }
-    });
+    }
 
-    return this.http.get(this.apiUrl + '/attendance_request/all');
+    return httpParams;
+  }
+
+  myAttendances(params: AttendanceLogParams): Observable<any> {
+    const url = `${this.apiUrl}/attendance_requests`;
+    const httpParams = this.createHttpParams(params);
+    return this.http.get(url, { params: httpParams });
+  }
+
+  allAttendances(params: AttendanceLogParams): Observable<any> {
+    const url = `${this.apiUrl}/attendance_request/all`;
+    const httpParams = this.createHttpParams(params);
+    return this.http.get(url, { params: httpParams });
   }
 }
