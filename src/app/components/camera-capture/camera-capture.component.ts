@@ -13,7 +13,6 @@ export class CameraCaptureComponent implements OnDestroy {
   capturedImage: string | null = null;
   isCapturing: boolean = false;
   isRetaking: boolean = false;
-  isHidingAllBtn: boolean = false;
   mediaStream: MediaStream | null = null;
   isCameraBlocked: boolean = false;
 
@@ -43,24 +42,18 @@ export class CameraCaptureComponent implements OnDestroy {
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
-        this.isHidingAllBtn = true;
-
         this.mediaStream = stream;
         this.videoElement.nativeElement.srcObject = stream;
         this.videoElement.nativeElement.play();
 
-        // prevent taking picture when media stream is not ready
-        setTimeout(() => {
-          this.isCapturing = true;
-          this.isHidingAllBtn = false;
-        }, 1000);
+        this.isCapturing = true;
       })
       .catch((error) => {
         if (error.name === 'NotAllowedError') {
           this.toastr.error('camera permission is blocked');
         }
         this.isCapturing = false;
-      });
+      })
   }
 
   captureImage() {

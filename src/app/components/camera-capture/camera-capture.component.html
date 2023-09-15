@@ -5,13 +5,13 @@
     <app-svg-icon iconClass="close" color="white" [width]="30"></app-svg-icon>
   </span>
 
-  <div *ngIf="!isCapturing && !capturedImage || isHidingAllBtn" class="default-placeholder">
+  <div *ngIf="!isCapturing && !capturedImage" class="default-placeholder">
     <app-svg-icon [width]="45" color="white" iconClass="camera"></app-svg-icon>
     <p *ngIf="isCameraBlocked">Please add permission to the camera</p>
   </div>
 
-  <div *ngIf="!isHidingAllBtn" class="btn-container">
-    <button *ngIf="!isCapturing && !capturedImage" (click)="startCamera()">
+  <div class="btn-container">
+    <button *ngIf="!isCapturing && !isRetaking && !capturedImage" (click)="startCamera()">
       Start Camera
     </button>
     <button class="capture-btn" *ngIf="isCapturing && !capturedImage" (click)="captureImage()">
